@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GeoQuiz</string>
+    <string name="true_button">True</string>
+    <string name="false_button">False</string>
+    <string name="incorrect_toast">Incorrect</string>
+    <string name="correct_toast">Correct!</string>
+    <string name="next_button">NEXT</string>
+    <string name="question_oceans">the pallklljljlk</string>
+    <string name="question_mideast">the suez canal connects the red sea</string>
+    <string name="question_africa">the source of the nile river is in the egypt</string>
+    <string name="question_asia">the lake baikal is the world oldest and deepest.</string>
+    <string name="pre_button">PRE</string>
+    <string name="warning_text">Are u sure u wannr to do this?</string>
+    <string name="show_answer_button">Show Answer</string>
+    <string name="cheat_button">cheat!</string>
+</resources>
