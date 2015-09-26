@@ -20,7 +20,16 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://D:/Android/sdk/extras/android/support/v4/android-support-v4.jar!/" />
+          <root url="jar://$MODULE_DIR$/libs/android-support-v4.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/libs/lombok-1.16.6.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
