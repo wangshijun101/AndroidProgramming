@@ -15,6 +15,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
+import java.util.UUID;
+
 /**
  * Created by flying on 9/16/2015 0016.
  */
@@ -24,6 +26,7 @@ public class CrimeFragment extends Fragment{
     private Button mDateButton;
     private CheckBox mSolvedCheckBox;
     private final String TAG = "CrimeFragment";
+    public static final String EXTRA_CRIME_ID = "com.iwjw.criminalintent.crime_id";
 
     @Override
     public void onAttach(Activity activity) {
@@ -33,7 +36,8 @@ public class CrimeFragment extends Fragment{
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mCrime = new Crime();
+        UUID crimeId =(UUID)getActivity().getIntent().getSerializableExtra(EXTRA_CRIME_ID);
+        mCrime = CrimeLab.get(getActivity()).getCrime(crimeId);
         Log.d(TAG,"onCreate method called");
     }
 
@@ -52,7 +56,7 @@ public class CrimeFragment extends Fragment{
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                mCrime.setmTitle(s.toString());
+                mCrime.setMTitle(s.toString());
             }
 
             @Override
@@ -60,12 +64,13 @@ public class CrimeFragment extends Fragment{
                 // left blank
             }
         });
-        mDateButton.setText(DateUtils.formatDate(mCrime.getmDate(), "yyyy-MM-dd HH:mm:ss"));
+        mTitleField.setText(mCrime.getMTitle());
+        mDateButton.setText(DateUtils.formatDate(mCrime.getMDate(), "yyyy-MM-dd HH:mm:ss"));
         mDateButton.setEnabled(false);
         mSolvedCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                mCrime.setmSolved(isChecked);
+                mCrime.setMSolved(isChecked);
             }
         });
         Log.d(TAG, "onCreateView method called");
