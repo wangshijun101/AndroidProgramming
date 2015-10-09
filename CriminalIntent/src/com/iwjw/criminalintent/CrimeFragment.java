@@ -28,6 +28,14 @@ public class CrimeFragment extends Fragment{
     private final String TAG = "CrimeFragment";
     public static final String EXTRA_CRIME_ID = "com.iwjw.criminalintent.crime_id";
 
+    public static CrimeFragment newInstance(UUID crimeId){
+        Bundle args = new Bundle();
+        args.putSerializable(EXTRA_CRIME_ID, crimeId);
+        CrimeFragment fragment = new CrimeFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -36,8 +44,14 @@ public class CrimeFragment extends Fragment{
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        UUID crimeId =(UUID)getActivity().getIntent().getSerializableExtra(EXTRA_CRIME_ID);
+        //method 1
+//        UUID crimeId =(UUID)getActivity().getIntent().getSerializableExtra(EXTRA_CRIME_ID);
+
+        //method 2
+        UUID crimeId = (UUID)getArguments().getSerializable(EXTRA_CRIME_ID);
+
         mCrime = CrimeLab.get(getActivity()).getCrime(crimeId);
+
         Log.d(TAG,"onCreate method called");
     }
 
@@ -48,22 +62,6 @@ public class CrimeFragment extends Fragment{
         mDateButton = (Button)v.findViewById(R.id.crime_date);
         mSolvedCheckBox = (CheckBox)v.findViewById(R.id.crime_solved);
 
-        mTitleField.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                // left blank
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                mCrime.setMTitle(s.toString());
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                // left blank
-            }
-        });
         mTitleField.setText(mCrime.getMTitle());
         mDateButton.setText(DateUtils.formatDate(mCrime.getMDate(), "yyyy-MM-dd HH:mm:ss"));
         mDateButton.setEnabled(false);
@@ -73,7 +71,26 @@ public class CrimeFragment extends Fragment{
                 mCrime.setMSolved(isChecked);
             }
         });
+
+        mTitleField.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // left blank
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//                mCrime.setMTitle(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                //modified set the change data to the list object;
+                mCrime.setMTitle(s.toString());
+            }
+        });
         Log.d(TAG, "onCreateView method called");
+
         return v;
     }
 
