@@ -45,5 +45,25 @@ public class CrimePagerActivity extends FragmentActivity {
                 break;
             }
         }
+
+        mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int i, float v, int i1) {
+
+            }
+
+            @Override
+            public void onPageSelected(int i) {
+                Crime crime = mCrimes.get(i);
+                if(crime.getMTitle() != null){
+                    setTitle(crime.getMTitle());
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int i) {
+
+            }
+        });
     }
 }

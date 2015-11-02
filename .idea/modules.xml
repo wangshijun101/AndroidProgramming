@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/AndroidProgramming.iml" filepath="$PROJECT_DIR$/.idea/AndroidProgramming.iml" />
       <module fileurl="file://$PROJECT_DIR$/CriminalIntent/CriminalIntent.iml" filepath="$PROJECT_DIR$/CriminalIntent/CriminalIntent.iml" />
       <module fileurl="file://$PROJECT_DIR$/GeoQuiz/GeoQuiz.iml" filepath="$PROJECT_DIR$/GeoQuiz/GeoQuiz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HelloMoon/HelloMoon.iml" filepath="$PROJECT_DIR$/HelloMoon/HelloMoon.iml" />
     </modules>
   </component>
 </project>
